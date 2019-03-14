@@ -1,0 +1,25 @@
+# -读取input.txt给出的数据-
+f = open("input.txt", "r")
+c = int(f.read())
+print("输入的数据:", c)
+# ------------------------
+b = []#列表存放求得的分解式个数
+def func(n):
+    count = 1
+    if (n == 1):
+        b.append(count)
+    for i in range(2, n + 1):
+        if (n % i == 0):
+            func(n // i)
+#a=int(input("输入一个整数："))
+#fun(a)
+func(c)
+print("有", len(b), "种分解式")
+# -输出结果到output.txt---
+output = str(len(b))
+#print(output)
+f1 = open("output.txt", "w")
+f1.write(output)
+# -----------------------
+f.close()
+f1.close()
