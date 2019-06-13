@@ -1,0 +1,67 @@
+a=[]#读取input.txt里的数据
+sequence=[]#记录变换序列
+count=[]#记录变换次数
+#----读取input.txt的数据-------
+data = open("input.txt")
+read = data.read()
+string = read.split()
+for i in string:
+    a.append(i)
+a = [ int(x) for x in a]
+data.close()
+#------------------------------
+n=a[0]
+m=a[1]
+print("将",n,"变换成",m)
+def f(i):
+	return 3*i
+def g(i):
+	return int(i/2)#取下整
+def change(i,j):
+	count.append(1)
+	if(i>j):
+		sequence.append("g")
+		temp=g(i)
+		if(temp==j):
+			#--写数据到output.txt中--
+			count1=str(len(sequence))
+			sequence1=str(sequence)
+			write_data=open("output.txt",'w')
+			write_data.write(count1)
+			write_data.write("\n")
+			for c in sequence:
+				write_data.write(c)
+			write_data.close()
+			#----将结果输出到控制台-----
+			print("变换次数：",len(sequence))
+			for c in reversed(sequence):
+				print(c,end='')
+			exit()
+		if(len(count)==100):
+			print("无法转换")
+			exit()	
+		change(temp,j)
+	else:
+		sequence.append("f")
+		temp=f(i)
+		#print(sequence)
+		if(temp==j):
+			#--写数据到output.txt中--
+			count1=str(len(sequence))
+			sequence1=str(sequence)
+			write_data=open("output.txt",'w')
+			write_data.write(count1)
+			write_data.write("\n")
+			for c in sequence:
+				write_data.write(c)
+			write_data.close()
+			#----将结果输出到控制台-----
+			print("变换次数：",len(sequence))
+			for c in reversed(sequence):
+				print(c,end='')
+			exit()
+		if(len(count)==100):
+			print("无法转换")
+			exit()
+		change(temp,j) 	
+change(n,m)
