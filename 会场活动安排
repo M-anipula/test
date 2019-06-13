@@ -1,0 +1,46 @@
+'''
+读取input文本的数据
+a[0]表示有多少个活动即input文本的第一个数字
+a[]中下标为单数表示活动开始时间，双数的表示结束时间
+'''
+a=[]#存放input文本的数据
+A=[1]#存放能够相容的活动,默认有一个活动
+s=[]#开始时间start
+e=[]#结束时间end
+f=open("input.txt")
+read = f.read()
+f.close()
+string=read.split()
+for i in string:
+	a.append(i)
+for i in range(1,len(a),2):
+	s.append(a[i])
+for j in range(2,len(a),2):
+	e.append(a[j])
+for k in range(1,len(s)+1):
+    print("第",k,"个活动的开始时间是:",s[k-1])
+for n in range(1,len(e)+1):
+    print("第",n,"个活动的结束时间是:",e[n-1])
+#----将列表的字符串转化为数字------
+s = [ int(x) for x in s ]
+e = [ int(x) for x in e ]
+#----------------------------------
+
+def ActivitySelector(s=[],f=[]):
+	j=0
+	for i in range(len(s)):
+		if(s[i]>f[j]):
+			A.append(i)
+			j=i#当前能够加入当列表A的活动结束时间，下一个活动的开始时间应该大于这个结束时间才可以加入列表A
+
+
+ActivitySelector(s,e)
+print("开始时间:",s)
+print("结束时间:",e)
+print(A)
+#print(len(A))
+#将结果输出到output文本
+result=str(len(A))
+output=open("output.txt",'w')
+output.write(result)
+output.close()
