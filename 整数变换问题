@@ -4,7 +4,7 @@ count=[]#记录变换次数
 #----读取input.txt的数据-------
 data = open("input.txt")
 read = data.read()
-string = read.split()
+string = read.split()       #
 for i in string:
     a.append(i)
 a = [ int(x) for x in a]
@@ -19,7 +19,7 @@ def g(i):
 	return int(i/2)#取下整
 def change(i,j):
 	count.append(1)
-	if(i>j):
+	if(i>j):#被变换的数大于想要变换成的数
 		sequence.append("g")
 		temp=g(i)
 		if(temp==j):
@@ -41,7 +41,7 @@ def change(i,j):
 			print("无法转换")
 			exit()	
 		change(temp,j)
-	else:
+	else:#被变换的数小于想要变换成的数
 		sequence.append("f")
 		temp=f(i)
 		#print(sequence)
