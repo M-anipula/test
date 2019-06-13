@@ -14,7 +14,7 @@ string=read.split()
 for i in string:
 	a.append(i)
 for i in range(1,len(a),2):
-	s.append(a[i])
+	s.append(a[i])#                          第6行到第23行代码主要读取到input.txt
 for j in range(2,len(a),2):
 	e.append(a[j])
 for k in range(1,len(s)+1):
@@ -22,7 +22,7 @@ for k in range(1,len(s)+1):
 for n in range(1,len(e)+1):
     print("第",n,"个活动的结束时间是:",e[n-1])
 #----将列表的字符串转化为数字------
-s = [ int(x) for x in s ]
+s = [ int(x) for x in s ]#                  第25-26行代码将列表里面的字符转换成整型数字
 e = [ int(x) for x in e ]
 #----------------------------------
 
@@ -37,7 +37,7 @@ def ActivitySelector(s=[],f=[]):
 ActivitySelector(s,e)
 print("开始时间:",s)
 print("结束时间:",e)
-print(A)
+#print(A)
 #print(len(A))
 #将结果输出到output文本
 result=str(len(A))
